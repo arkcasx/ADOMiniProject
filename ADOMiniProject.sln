@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UILayer", "UILayer.csproj", "{8260FCD7-B722-481F-A99F-BFB2E34DF4A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "..\LogicLayer\ServiceLayer.csproj", "{EDCAE147-8A95-43A1-A061-F8D8B7734C03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8260FCD7-B722-481F-A99F-BFB2E34DF4A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8260FCD7-B722-481F-A99F-BFB2E34DF4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8260FCD7-B722-481F-A99F-BFB2E34DF4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8260FCD7-B722-481F-A99F-BFB2E34DF4A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDCAE147-8A95-43A1-A061-F8D8B7734C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDCAE147-8A95-43A1-A061-F8D8B7734C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDCAE147-8A95-43A1-A061-F8D8B7734C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDCAE147-8A95-43A1-A061-F8D8B7734C03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA2736BE-D955-43B6-BE4E-3B0D467BA042}
+	EndGlobalSection
+EndGlobal
