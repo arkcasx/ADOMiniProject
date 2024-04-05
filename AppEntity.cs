@@ -1,4 +1,4 @@
-﻿using CoreLogic.Service;
+﻿using EntityLogic.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using CoreLogic.Model;
+using EntityLogic.Model;
+using EntityLogic.Data;
 
-namespace  UILayer;
+namespace EntityUILayer;
 
 class App
 {
@@ -16,15 +17,15 @@ class App
 
     public App() //why do we do this?
     {
-        _studentService = new StudentService(); 
+        _studentService = new StudentService();
     }
     public void RunUI(bool AppIsRunning)
     {
         while (AppIsRunning)
         {
             MainMenu();
-            
-            switch(UserChoice())
+
+            switch (UserChoice())
             {
                 case "1":
                     ListStudents();
@@ -50,19 +51,19 @@ class App
                     break;
 
             };
-                   
+
         };
 
     }
 
     private void UpdateStudent()
     {
-        
+
 
         bool updating = true;
         while (updating == true)
         {
-            
+
             UpdateMenu();
             Student s = new Student();
             switch (UserChoice())
@@ -70,14 +71,14 @@ class App
                 case "1":
                     Console.WriteLine("Updating Name");
 
-                    
+
 
                     s.Id = StudentId();
                     s.Name = StudentName();
 
                     _studentService.Update(s);
                     Console.WriteLine("Student name is updated!");
-                   
+
 
                     updating = false;
                     break;
@@ -126,17 +127,16 @@ class App
     private void ListStudents()
     {
         Console.WriteLine("List of Students");
-        var students = _studentService.RetrieveAll();
+        var db = new MyContext();
 
         Console.WriteLine();
-        foreach (var student in students)
-            Console.WriteLine($"{student.Id,-5}{student.Name,-15}{student.City}");
+        foreach (var x in db.Students)
+            Console.WriteLine($"{x.Id,-5}{x.Name,-15}{x.City}");
         Console.WriteLine();
     }
     private void AddStudent()
     {
         Student s = new Student();
-        s.Id = StudentId();
         s.Name = StudentName();
         s.City = StudentCity();
 
@@ -147,12 +147,11 @@ class App
 
     private void RemoveStudent()
     {
-        int Id = StudentId();
-        Console.WriteLine($"Removing Record of Student ID {Id}");
+        Student s = new Student();
+        s.Id = StudentId();
+        _studentService.Delete(s);
+        Console.WriteLine($"Removing Record of Student ID {s.Id}");
 
-        _studentService.Delete(Id);
-
-        Console.WriteLine($"Student {Id} deleted!");
         ListStudents();
     }
 
@@ -165,9 +164,8 @@ class App
 
         foreach (var student in students)
             Console.WriteLine($"{student.Id,-5}{student.Name,-15}{student.City}");
-        Console.WriteLine("FilterCity");
     }
-    
+
     private string UserChoice()
     {
         Console.Write("Enter Choice: ");
