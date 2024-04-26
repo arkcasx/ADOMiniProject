@@ -32,12 +32,17 @@ class App
                     break;
                 case "2":
                     AddStudent();
+                    ListStudents();
                     break;
                 case "3":
+                    ListStudents();
                     UpdateStudent();
+                    ListStudents();
                     break;
                 case "4":
+                    ListStudents();
                     RemoveStudent();
+                    
                     break;
                 case "5":
                     FilterCity();
@@ -149,10 +154,18 @@ class App
     {
         Student s = new Student();
         s.Id = StudentId();
-        _studentService.Delete(s);
-        Console.WriteLine($"Removing Record of Student ID {s.Id}");
+        var x = _studentService.Delete(s);
 
-        ListStudents();
+        if (x == 0)        
+            Console.WriteLine($"Studemt Not Found");        
+        else
+        {
+            Console.WriteLine($"Removing Record of Student ID {s.Id}");
+            ListStudents();
+        }
+            
+
+
     }
 
     private void FilterCity()
